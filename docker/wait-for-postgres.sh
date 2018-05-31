@@ -4,7 +4,6 @@
 set -e
 
 host="$1"
-shift
 cmd1="$2"
 cmd2="$3"
 
@@ -14,5 +13,5 @@ until PGPASSWORD="postgres" psql -h "$host" -U "postgres" -c '\q'; do
 done
 
 >&2 echo "Postgres is up - executing command"
-exec $cmd1
-exec $cmd2
+$cmd1
+$cmd2
